@@ -1,0 +1,27 @@
+<h2>User login</h2>
+
+<a routerLink="/registration">Registration</a>
+
+<hr />
+
+<form [formGroup]="loginForm" (submit)="onSubmit()" novalidate>
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" formControlName="username">
+    <p *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched">Username is invalid</p>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" formControlName="password">
+    <p *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Password is invalid</p>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="loginForm.invalid">Submit</button>
+  </div>
+</form>
+
+<div *ngIf="message">
+  {{ message }}
+</div>

@@ -1,0 +1,31 @@
+<div *ngIf="article">
+  <h2>Article {{ article.id}} update</h2>
+
+  <a routerLink="/main">Go back</a>
+
+  <hr />
+
+  <form [formGroup]="articleUpdateForm" (submit)="onSubmit()">
+    <div>
+      <label for="header">Header:</label>
+      <input type="text" id="header" name="header" formControlName="header" [(ngModel)]="article.header">
+      <p *ngIf="articleUpdateForm.get('header').invalid && articleUpdateForm.get('header').touched">Header is invalid</p>
+    </div>
+
+    <div>
+      <label for="body">Body:</label>
+      <input type="body" id="body" name="body" formControlName="body" [(ngModel)]="article.body">
+      <p *ngIf="articleUpdateForm.get('body').invalid && articleUpdateForm.get('body').touched">Body is invalid</p>
+    </div>
+
+    <div>
+      <label for="tag">Tag:</label>
+      <input type="tag" id="tag" name="tag" formControlName="tag" [(ngModel)]="article.tag">
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="articleUpdateForm.invalid">Submit</button>
+    </div>
+  </form>
+
+</div>

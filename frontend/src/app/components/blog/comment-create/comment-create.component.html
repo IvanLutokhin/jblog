@@ -1,0 +1,25 @@
+<h2>Comment create</h2>
+
+<form [formGroup]="commentCreateForm" (submit)="onSubmit()">
+  <div>
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" formControlName="author">
+    <p *ngIf="commentCreateForm.get('author').invalid && commentCreateForm.get('author').touched">Author is invalid</p>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" formControlName="email">
+    <p *ngIf="commentCreateForm.get('email').invalid && commentCreateForm.get('email').touched">Email is invalid</p>
+  </div>
+
+  <div>
+    <label for="text">Text:</label>
+    <input type="text" id="text" name="text" formControlName="text">
+    <p *ngIf="commentCreateForm.get('text').invalid && commentCreateForm.get('text').touched">Text is invalid</p>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="commentCreateForm.invalid">Submit</button>
+  </div>
+</form>

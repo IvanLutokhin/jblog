@@ -1,0 +1,10 @@
+<p>
+  <a routerLink="/main">Go back</a>
+</p>
+
+<div *ngIf="account">
+  <h2>{{ account.username }}</h2>
+  <div>Email: {{ account.email }}</div>
+  <div>Number of articles: {{ account.articles.length }}</div>
+</div>
+

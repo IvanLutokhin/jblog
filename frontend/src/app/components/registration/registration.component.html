@@ -1,0 +1,40 @@
+<h2>User registration</h2>
+
+<a routerLink="/login">Login</a>
+
+<hr />
+
+<form [formGroup]="registrationForm" (submit)="onSubmit()">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" formControlName="username">
+    <p *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">Username is invalid</p>
+  </div>
+
+  <div formGroupName="password_group">
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" formControlName="password">
+    </div>
+
+    <div>
+      <label for="confirm_password">Confirm Password:</label>
+      <input type="password" id="confirm_password" name="confirm_password" formControlName="confirm_password">
+    </div>
+
+    <p *ngIf="registrationForm.get('password_group').invalid && registrationForm.get('password_group').touched">Passwords not equals</p>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" formControlName="email">
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+  </div>
+</form>
+
+<div *ngIf="message">
+  {{ message }}
+</div>

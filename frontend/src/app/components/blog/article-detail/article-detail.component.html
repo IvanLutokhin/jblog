@@ -1,0 +1,27 @@
+<p>
+  <a routerLink="/main">Go back</a>
+</p>
+
+<div *ngIf="article">
+  <div>
+    <h2>{{ article.header }}</h2>
+    <div>{{ article.tag }}</div>
+  </div>
+  <p>{{ article.body }}</p>
+
+  <hr />
+
+  <app-comment-create (create)="onCreateComment($event)"></app-comment-create>
+
+  <ul *ngIf="article.comments">
+    <li *ngFor="let comment of article.comments">
+      <div>Author: {{ comment.author }}</div>
+      <div>Email: {{ comment.email }}</div>
+      <p>{{ comment.text }}</p>
+      <div *ngIf="accountId == article.account.id">
+        <button (click)="deleteComment(comment)">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+</div>

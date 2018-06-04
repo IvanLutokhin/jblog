@@ -1,0 +1,23 @@
+<h2>Articles</h2>
+
+<a routerLink="/articles/create">New article</a>
+
+<ul>
+  <li *ngFor="let article of articles">
+    <div>
+      <a routerLink="/articles/{{ article.id }}">{{ article.header }}</a>
+      <div>
+        <span>Author: </span>
+        <span><a routerLink="/accounts/{{ article.account.id }}">{{ article.account.username }}</a></span>
+
+        <div *ngIf="accountId == article.account.id">
+          <a routerLink="/articles/{{ article.id }}/update">Edit</a>
+        </div>
+        <div *ngIf="accountId == article.account.id">
+          <button (click)="deleteArticle(article)">Delete</button>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </li>
+</ul>
